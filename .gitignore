@@ -4,4 +4,8 @@ log/
 # temp-file
 *rdb
 
-# 
+# idea
+.idea/
+
+# py
+__pycache__/
