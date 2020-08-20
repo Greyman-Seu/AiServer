@@ -1,0 +1,85 @@
+# ref: https://blog.csdn.net/yy19890521/article/details/80990175
+
+# 配置版本信息
+version: 1
+disable_existing_loggers: False # 是否禁用同名log
+file_type: size
+# 配置格式
+#    %(filename)s	打印当前执行程序名称
+#    %(funcName)s	打印日志的当前函数
+#    %(lineno)d     打印日志的当前行号
+#    %(pathname)s 调用日志输出函数的模块的完整路径名，可能没有
+#    %(filename)s 调用日志输出函数的模块的文件名
+#    %(module)s 调用日志输出函数的模块名
+#    %(funcName)s 调用日志输出函数的函数名
+#  - %(process)d - %(thread)d
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  verbose:
+    format: '%(levelname)s - %(asctime)s - %(pathname)s - %(filename)s - %(module)s - %(funcName)s - %(lineno)d: %(message)s' #%(module)s
+  access:
+    class: uvicorn.logging.AccessFormatter
+    fmt: '%(levelprefix)s %(client_addr)s - "%(request_line)s" %(status_code)s'
+  default:
+    fmt: '%(levelprefix)s %(client_addr)s'
+    class: uvicorn.logging.DefaultFormatter
+
+# 配置处理器
+handlers:
+  console:
+    class: logging.StreamHandler
+#    level: INFO
+    formatter: simple
+#    stream: ext://sys.stdout # ext://sys.stderr
+
+  #=======================
+  # FastApi
+  access:
+    class: logging.StreamHandler
+    formatter: access
+    stream: ext://sys.stderr
+  default:
+    class: logging.StreamHandler
+    formatter: access
+    stream: ext://sys.stdout
+
+  file_size:
+    class: logging.handlers.RotatingFileHandler
+#    level: DEBUG
+    formatter: verbose
+    filename: default.log
+    maxBytes: 1024000
+    backupCount: 3
+    encoding: utf-8
+    mode: a # w创建只写 a创建追加写 （+）可读
+
+#  file_time: # 为什么不用也是这样
+#    class: logging.handlers.TimedRotatingFileHandler
+#    level: DEBUG
+#    formatter: verbose
+#    filename: default_time.log  #调用时修改
+#    when: D #day
+#    backupCount: 3
+#    interval: 1
+
+
+# 用户设置
+loggers:
+  root: # 自己定义的log.info,下面是fastapi打印的内容，todo:多个file如何在一个文件里面打印
+    level: DEBUG
+    handlers: [console,file_size]
+  uvicorn:
+    level: INFO
+    handlers: [default,file_size]
+    propagate: 0
+  uvicorn.access:
+    level: INFO
+    handlers: [access,file_size]
+    propagate: 0
+  uvicorn.error:
+    level: DEBUG
+    handlers: [console,file_size]
+    qualname: uvicorn.error
+    propagate: 0
+

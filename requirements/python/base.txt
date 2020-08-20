@@ -1,0 +1,7 @@
+celery[redis]
+fastapi
+uvicorn
+aiofiles
+
+pyyaml
+prettytable

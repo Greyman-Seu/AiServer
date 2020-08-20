@@ -1,0 +1,20 @@
+services:
+  # get
+  test_services:
+    prefix:
+      print_name
+    tags:
+      is_print_name
+    path:  #带上路径
+      test_services #完整调用路径为hub.services.test_services  获取router
+
+tasks:
+  # post
+  test_tasks:
+    prefix:
+      add
+    tags:
+      add
+
+
+

@@ -1,0 +1,7 @@
+# log-file
+log/
+
+# temp-file
+*rdb
+
+# 
