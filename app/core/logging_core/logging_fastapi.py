@@ -29,4 +29,4 @@ mkdir_log([path_log, path_relative_fastapi,path_relative_celery])
 """
 设置fastapi log
 """
-fastapi_logger, fastapi_log_config = get_logger(path_relative_fastapi / "fastapi.log", path_logging_fastapi_yml, "root")
+fastapi_logger, fastapi_log_config = get_logger(path_relative_fastapi / "fastapi.log", path_logging_fastapi_yml, "uvicorn.error") #"root"

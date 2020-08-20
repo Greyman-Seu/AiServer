@@ -8,6 +8,15 @@ services:
     path:  #带上路径
       test_services #完整调用路径为hub.services.test_services  获取router
 
+  # get
+  task_query:
+    prefix:
+      task_query
+    tags:
+      task_query
+    path:  #带上路径
+      task_query
+
 tasks:
   # post
   test_tasks:

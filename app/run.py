@@ -9,7 +9,7 @@ from fastapi import FastAPI
 from app.tools import set_swagger_ui
 from app.api.api import api_router
 from app.conf import project_setting
-from app.core.logging_core.logging_fastapi import fastapi_logger,fastapi_log_config
+from app.core.logging_core.logging_fastapi import fastapi_logger, fastapi_log_config
 
 
 # todo:格式化打印

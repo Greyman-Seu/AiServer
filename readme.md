@@ -47,12 +47,14 @@ sudo apt-get install redis-server
 
 # TODO
 1. docker部署（dockerfile docker-compose）
-2. 
+2. redis启动，自启，需要配置文件
+
 
 # BUG
 1. celery日志有问题,命名使用实时时间到秒时，会出现两个文件
 2. celery目前只能输出用户定义的输出，celery输出信息无法保存，即目前celery日志完全和celery本身的日志系统独立。
 3. celery输出两遍 
-
+4. uvicorn命令行启动有些问题，日志文件需要改成ini输出
+5. 接口开放好像有点问题
 # 改进
 1. 需要一个完善的日志，需求可以满足多进程线程以及celery日志输出
