@@ -39,8 +39,9 @@ api_config = get_yaml_data(path_api_yml)
 # 获取tasks
 tasks = []
 for api_name, api_info in api_config.get("tasks", {}).items():
-    if api_name != None:
+    if api_name is not None:
         tasks.append("app.api.hub.tasks." + api_info.get("path", api_name))
+
 
 celery_app = Celery(
     project_name,
@@ -54,4 +55,7 @@ celery_app = Celery(
 配置celery参数
 """
 celery_app.conf.update(**celery_config["celery"])
+
+
+
 

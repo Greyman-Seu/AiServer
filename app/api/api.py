@@ -38,7 +38,7 @@ api_router = APIRouter()
 
 for kind in ["services", "tasks"]:
     for api_name, api_info in api_config.get(kind, {}).items():
-        if api_name != None:
+        if api_name is not None:
             # 动态加载
             api_func = importlib.import_module(name="app.api.hub." + kind + "." + api_info.get("path", api_name))
             # 注册服务

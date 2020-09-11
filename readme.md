@@ -57,5 +57,8 @@ sudo apt-get install redis-server
 4. uvicorn命令行启动有些问题，日志文件需要改成ini输出
 5. 接口开放好像有点问题
 6. 启动sh脚本需要读取yml中的配置文件
+
+
 # 改进
 1. 需要一个完善的日志，需求可以满足多进程线程以及celery日志输出
+2. celery加跨域

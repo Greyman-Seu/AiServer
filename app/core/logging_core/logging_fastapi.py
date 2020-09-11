@@ -4,10 +4,6 @@
 # @Email:zyk_120403228@163.com
 
 
-# @File  : logging_core.py
-# @Date  :  2020/08/14
-# @Author: zhuyangkun
-# @Email:zyk_120403228@163.com
 
 # %% -------------------------------------
 """
